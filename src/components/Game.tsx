@@ -1,9 +1,9 @@
 import Phaser from "phaser";
-import ExampleScene from "./scenes/exampleScene";
+import ExampleScene from "../scenes/exampleScene";
 
 import * as React from "react";
 
-import { GAME_HEIGHT, GAME_WIDTH } from "./config";
+import { GAME_HEIGHT, GAME_WIDTH } from "../config";
 
 export interface IGameProps { }
 

@@ -1,19 +1,20 @@
 import { Scene } from 'phaser';
+import { GAME_HEIGHT, GAME_WIDTH } from '../config';
+import Background from '../assets/scenes/backgrounds/background_1.jpg';
 import Ground from '../components/Ground';
-import Background from '../assets/1-Background_scene_8@0.5x.jpg';
 
 export default class ExampleScene extends Scene {
 
-  offsetX: 350;
-  offsetY: 80;
+  ground: Ground = new Ground(this);
 
   preload() {
     this.load.image('Background', Background);
-    new Ground(this).loadAssets();
+    this.ground.loadAssets();
   }
+
   create() {
-    this.add.image(this.offsetX, this.offsetY + 60, 'Background');
-    new Ground(this).placeTiles();
+    this.add.image(GAME_WIDTH / 2,  GAME_HEIGHT / 2, 'Background');
+    this.ground.placeTiles();
   }
 
 }

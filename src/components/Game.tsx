@@ -5,9 +5,8 @@ import * as React from "react";
 
 import { GAME_HEIGHT, GAME_WIDTH } from "../config";
 
-export interface IGameProps { }
+export default class IGame extends React.Component<any, any> {
 
-export default class IGame extends React.Component<IGameProps, any> {
   componentDidMount() {
     const config: GameConfig = {
       type: Phaser.AUTO,
@@ -25,6 +24,11 @@ export default class IGame extends React.Component<IGameProps, any> {
   }
 
   public render() {
-    return <div id="phaser-game" />;
+    return (
+      <div id="phaser-game">
+   
+      </div>
+    )
   }
+  
 }

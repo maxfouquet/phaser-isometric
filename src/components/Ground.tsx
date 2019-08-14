@@ -1,4 +1,4 @@
-import { Scene } from 'phaser';
+import { Scene, Geom } from 'phaser';
 import { GAME_HEIGHT, GAME_WIDTH, GRID, TILES, TILE_WIDTH, TILE_HEIGHT } from '../config';
 import GrassBlock from '../assets/scenes/blocks/grass_block.png';
   
@@ -13,22 +13,25 @@ export default class Ground {
         this.scene.load.image('GrassBlock', GrassBlock);
     }
 
-    cartesianToIsometric(x: number, y: number): {x: number, y: number}{
-        let tmpX = x - y;
-        let tmpY = (x + y) / 2;
-        return { x: tmpX, y: tmpY };
+    cartesianToIsometric(cartPt: Geom.Point): Geom.Point{
+        let tmpPt = new Geom.Point();
+        tmpPt.x = cartPt.x - cartPt.y;
+        tmpPt.y = (cartPt.x + cartPt.y) / 2;
+        return (tmpPt);
     }
 
     placeTiles(): void{
         for (let i = 0; i < GRID.length; i += 1) {
             for (let j = 0; j < GRID[i].length; j += 1) {
-                let x = j * TILE_WIDTH;
-                let y = i * TILE_HEIGHT;
+                let cartPt = new Geom.Point();
+                let isoPt = new Geom.Point();
+                cartPt.x = j * TILE_WIDTH;
+                cartPt.y = i * TILE_HEIGHT;
                 let type =  TILES[GRID[i][j]];
-                let isometricPoint = this.cartesianToIsometric(x, y);
+                isoPt = this.cartesianToIsometric(cartPt);
                 this.scene.add.sprite(
-                    isometricPoint.x + GAME_WIDTH / 2,
-                    isometricPoint.y + GAME_HEIGHT / 4,
+                    isoPt.x + GAME_WIDTH / 2,
+                    isoPt.y + GAME_HEIGHT / 4,
                     type
                 );
             }

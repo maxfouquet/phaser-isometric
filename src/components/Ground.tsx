@@ -9,7 +9,7 @@ export default class Ground {
         this.scene = scene;
     }
 
-    loadAssets(): void{
+    loadTiles(): void{
         this.scene.load.image('GrassBlock', GrassBlock);
     }
 

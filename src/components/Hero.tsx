@@ -10,9 +10,7 @@ export default class Hero {
     }
 
     add(): void{
-        let character = this.scene.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, '1');
-        character.scaleX = 0.5;
-        character.scaleY = 0.5;
+        this.scene.add.sprite(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'southeast-1').setScale(0.4);
     }
 
 }

@@ -20,20 +20,24 @@ export default class Ground {
         return (tmpPt);
     }
 
+    drawTile(type: string, i: number, j:number):void{
+        let isoPt = new Geom.Point();
+        let cartPt = new Geom.Point();
+        cartPt.x = j * TILE_WIDTH;
+        cartPt.y = i * TILE_HEIGHT;
+        isoPt = this.cartesianToIsometric(cartPt);
+        this.scene.add.sprite(
+            isoPt.x + GAME_WIDTH / 2,
+            isoPt.y + GAME_HEIGHT / 4,
+            type
+        );
+    }
+
     placeTiles(): void{
         for (let i = 0; i < GRID.length; i += 1) {
             for (let j = 0; j < GRID[i].length; j += 1) {
-                let cartPt = new Geom.Point();
-                let isoPt = new Geom.Point();
-                cartPt.x = j * TILE_WIDTH;
-                cartPt.y = i * TILE_HEIGHT;
                 let type =  TILES[GRID[i][j]];
-                isoPt = this.cartesianToIsometric(cartPt);
-                this.scene.add.sprite(
-                    isoPt.x + GAME_WIDTH / 2,
-                    isoPt.y + GAME_HEIGHT / 4,
-                    type
-                );
+                this.drawTile(type, i, j);
             }
         }
     }

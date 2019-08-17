@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import ExampleScene from "../scenes/exampleScene";
+import ExampleScene from "../scenes/Scene";
 
 import * as React from "react";
 
@@ -12,7 +12,7 @@ export default class IGame extends React.Component<any, any> {
       type: Phaser.AUTO,
       width: GAME_WIDTH,
       height: GAME_HEIGHT,
-      parent: "phaser-game",
+      parent: "phaser",
       scene: [ExampleScene]
     };
 
@@ -25,7 +25,7 @@ export default class IGame extends React.Component<any, any> {
 
   public render() {
     return (
-      <div id="phaser-game">
+      <div id="phaser">
    
       </div>
     )
